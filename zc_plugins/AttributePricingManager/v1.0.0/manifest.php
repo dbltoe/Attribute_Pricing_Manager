@@ -39,7 +39,7 @@ $apmGithubUrl = 'https://github.com/dbltoe/Attribute_Pricing_Manager';
  * an uninstall and re-install. An empty string renders nothing at all, which
  * is the right outcome before the thread exists.
  */
-$apmForumUrl = 'https://www.zen-cart.com/threads/207329#post-1347048';
+$apmForumUrl = 'https://www.zen-cart.com/threads/207329?page=1#post-1347048';
 
 $apmButtonGap = '6px';
 
@@ -79,8 +79,9 @@ return [
     // ID from the Zen Cart Plugins Library -- the number after "vb" in the
     // plugin's page URL. It has to be right the FIRST time a store installs
     // the plugin: on v1.5.8/v2.0/v2.1 plugin_control.zc_contrib_id is written
-    // only by the INSERT that creates the row. Zero until the Library assigns
-    // one; the release harness refuses to package while it is zero.
+    // only by the INSERT that creates the row. The Library assigns the id on
+    // final acceptance, so it is zero in the submitted package; set it here,
+    // rebuild, and re-upload before any store installs from the Library.
     'pluginId' => 0,
     'zcVersions' => ['v158', 'v200', 'v210', 'v220', 'v230', 'v300'],
     'changelog' => 'changelog.txt',

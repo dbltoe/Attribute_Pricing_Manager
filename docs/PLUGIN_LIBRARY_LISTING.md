@@ -102,7 +102,7 @@ Manager panel.
 
 ### Support
 
-Support thread: https://www.zen-cart.com/threads/207329
+Support thread: https://www.zen-cart.com/threads/207329?page=1#post-1347048
 Source and issues: https://github.com/dbltoe/Attribute_Pricing_Manager
 
 Author: My Zen Cart Host (dbltoe). GNU General Public License v2.0.
