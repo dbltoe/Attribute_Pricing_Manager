@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attribute Pricing Manager &mdash; Read Me</title>
+<style>
+:root{
+  --bg:#ffffff; --fg:#1f2328; --muted:#57606a; --rule:#d8dee4;
+  --panel:#f6f8fa; --accent:#0969da; --warn-bg:#fff8c5; --warn-br:#d4a72c;
+  --code-bg:#f0f2f4;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d1117; --fg:#e6edf3; --muted:#9198a1; --rule:#30363d;
+    --panel:#161b22; --accent:#4493f8; --warn-bg:#2d2200; --warn-br:#9e6a03;
+    --code-bg:#161b22;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+     font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:2rem 1.25rem 5rem}
+header{border-bottom:1px solid var(--rule);padding-bottom:1.25rem;margin-bottom:1.5rem}
+h1{font-size:1.75rem;margin:0 0 .3rem}
+.tagline{color:var(--muted);margin:0}
+.meta{color:var(--muted);font-size:.875rem;margin:.75rem 0 0}
+.meta a{color:var(--accent)}
+h2{font-size:1.25rem;margin:2.5rem 0 .75rem;padding-top:1.25rem;border-top:1px solid var(--rule)}
+h3{font-size:1.02rem;margin:1.75rem 0 .5rem}
+p,ul,ol{margin:0 0 1rem}
+ul,ol{padding-left:1.4rem}
+li{margin:.3rem 0}
+a{color:var(--accent)}
+code{background:var(--code-bg);padding:.12em .38em;border-radius:4px;
+     font:.87em/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--panel);border:1px solid var(--rule);border-radius:6px;
+    padding:.85rem 1rem;overflow-x:auto;margin:0 0 1rem}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:0 0 1.25rem;font-size:.94rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.45rem .65rem;text-align:left;vertical-align:top}
+th{background:var(--panel);white-space:nowrap}
+td:first-child{white-space:nowrap}
+.note{background:var(--panel);border-left:4px solid var(--accent);
+      border-radius:0 6px 6px 0;padding:.8rem 1rem;margin:0 0 1.25rem}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-br);
+      border-radius:0 6px 6px 0;padding:.8rem 1rem;margin:0 0 1.25rem}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+nav{background:var(--panel);border:1px solid var(--rule);border-radius:6px;
+    padding:.9rem 1rem;margin:0 0 1.5rem}
+nav p{margin:0 0 .4rem;font-weight:600;font-size:.9rem}
+nav ul{margin:0;padding-left:1.2rem;columns:2;column-gap:2rem}
+nav li{margin:.15rem 0;font-size:.92rem;break-inside:avoid;page-break-inside:avoid}
+footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
+       color:var(--muted);font-size:.875rem}
+.layout{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.82rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<h1>Attribute Pricing Manager</h1>
+<p class="tagline">The price that changes as your customer chooses, right in front of Add to Cart.</p>
+<p class="meta">Version 1.0.0 &middot; Zen Cart v1.5.8 through v3.0.0 &middot; PHP 7.4 through 8.5 &middot;
+<a href="https://github.com/dbltoe/Attribute_Pricing_Manager">GitHub</a> &middot;
+My Zen Cart Host (dbltoe)</p>
+</header>
+
+<nav>
+<p>Contents</p>
+<ul>
+<li><a href="#what">What it does</a></li>
+<li><a href="#why">Why it exists</a></li>
+<li><a href="#how">How it works</a></li>
+<li><a href="#install">Installing</a></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#counts">What counts toward the total</a></li>
+<li><a href="#templates">Templates and selectors</a></li>
+<li><a href="#customizing">Customizing the look</a></li>
+<li><a href="#translating">Translating</a></li>
+<li><a href="#limits">Limitations</a></li>
+<li><a href="#upgrading">Upgrading</a></li>
+<li><a href="#uninstalling">Uninstalling</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#support">Support</a></li>
+</ul>
+</nav>
+
+<h2 id="what">What it does</h2>
+<p>On a product with options, Zen Cart shows <strong>Starting at: $59.95</strong> at the top of the page and
+leaves it there. The customer picks the $149.95 option, the page still says $59.95, and the first time
+they see the real figure is in the shopping cart. Some of them leave at that point.</p>
+<p>Attribute Pricing Manager replaces that with a figure that changes the moment an option changes, and puts it
+where the customer is about to commit:</p>
+<pre class="layout">  License:  [ Developer - Unlimited Stores ( +$190.00 ) v ]
+
+                    Total: $249.95
+                     [ Add to Cart ]</pre>
+<p>Dropdowns, radio buttons, checkboxes, text fields with per-word or per-letter pricing, quantity-tiered
+attribute prices, price factors, one-time charges, specials and sales, tax, the customer's currency: the
+figure is worked out the way the shopping cart works it out, so what they see is what they will pay.</p>
+
+<h2 id="why">Why it exists</h2>
+<p>Zen Cart's "Starting at:" is honest but unhelpful. It tells the customer the lowest price they could
+pay and nothing about the price they are about to pay. Every option they choose makes the gap bigger, and
+the gap is discovered at the worst possible moment.</p>
+<p>The obvious fix, an AJAX call back to the store on every change, is how the well-known Dynamic Price
+Updater does it. This plugin takes a different route so that it can run unchanged on every Zen Cart from
+v1.5.8 to v3.0.0: Zen Cart v1.5.8's <code>ajax.php</code> cannot load a class from a plugin directory
+at all, so an AJAX design would have needed a version branch. See <a href="#how">How it works</a>.</p>
+
+<h2 id="how">How it works</h2>
+<p>When a product page is built, the plugin works out, on the server and with Zen Cart's own pricing
+functions, the product's base price and what each attribute value adds or takes away. That data, plus the
+tax rate and the currency's format, goes into the page's <code>&lt;head&gt;</code> as one small JSON
+object. A script in the browser then reads the add-to-cart form and adds up whatever is selected, every
+time a selection changes. No request goes back to the server until Add to Cart is pressed.</p>
+<p>The arithmetic follows <code>shoppingCart::calculate()</code> for a quantity of one: base price with
+specials and sales applied, each selected attribute's delta (including discounted attributes and price
+factors), floored at zero, tax added when the store displays prices with tax, and one-time charges kept
+separate because the cart adds those once per order rather than per item.</p>
+<div class="note"><p>Nothing in the page is changed by PHP. The plugin observes one Zen Cart notifier,
+<code>NOTIFY_HTML_HEAD_END</code>, and everything visible is done by the script. Remove the plugin and the
+page is exactly as it was.</p></div>
+
+<h2 id="install">Installing</h2>
+<ol>
+<li>Upload the <code>zc_plugins/AttributePricingManager/</code> directory from the package to your store, so that it
+lands at <code>&lt;store root&gt;/zc_plugins/AttributePricingManager/v1.0.0/</code>. Nothing goes anywhere else.</li>
+<li>In your admin, go to <strong>Modules &rarr; Plugin Manager</strong>, select <strong>Attribute Pricing Manager</strong> and click <strong>Install</strong>.</li>
+<li>Open a product. The running total is there, in front of the Add to Cart button, labelled
+"Total:" and multiplied by the quantity box; the stock "Starting at:" heading stays where it was.
+Both of those are settings.</li>
+</ol>
+<p>The plugin is switched on as soon as it is installed. Its settings are under
+<strong>Configuration &rarr; Attribute Pricing Manager</strong>.</p>
+<div class="note"><p>If your store is itself a git checkout of Zen Cart, <code>zc_plugins/.gitignore</code>
+uses a deny-all rule with an allowlist; add <code>!AttributePricingManager/</code> and <code>!AttributePricingManager/**</code>
+to it or git will not see the plugin. This has no effect on the plugin working.</p></div>
+
+<h2 id="settings">Settings</h2>
+<p>All under <strong>Configuration &rarr; Attribute Pricing Manager</strong>.</p>
+<table>
+<tr><th>Setting</th><th>Default</th><th>What it does</th></tr>
+<tr><td>Enable Attribute Pricing Manager?</td><td>true</td><td>The master switch. Set to false to turn the plugin off without uninstalling it.</td></tr>
+<tr><td>Where to show the running total</td><td>Bottom</td><td><strong>Top</strong> writes it into the stock "Starting at:" heading, wherever the template puts that. <strong>Bottom</strong> puts it directly in front of the Add to Cart button. <strong>Both</strong> does both, kept in step.</td></tr>
+<tr><td>Hide the stock "Starting at:" price?</td><td>false</td><td>For the <em>Bottom</em> placement only: hide the template's own price heading so the page does not show two prices. If the total cannot be placed, the heading is shown again automatically.</td></tr>
+<tr><td>Stock price block selectors</td><td><code>#productPrices, #productsPriceTop-card, #productsPriceBottom-card</code></td><td>CSS selectors for the template's price heading(s). The defaults cover the stock templates and ZCA Bootstrap. See <a href="#templates">Templates and selectors</a>.</td></tr>
+<tr><td>Add to Cart container selector</td><td><code>#cartAdd</code></td><td>The element holding the Add to Cart button; the total goes immediately before the button inside it.</td></tr>
+<tr><td>Multiply by the quantity box?</td><td>true</td><td><strong>false</strong>: the price of one item with the chosen options, labelled "Your Price:". <strong>true</strong>: that times the quantity in the box, labelled "Total:", with the product's quantity discounts applied.</td></tr>
+<tr><td>Show one-time charges?</td><td>true</td><td>When a chosen option carries a once-per-order charge, show it on its own line beneath the total.</td></tr>
+<tr><td>Only on products with options?</td><td>false</td><td><strong>true</strong>: only where there is a "Starting at:" to improve on. <strong>false</strong>: every product page, which pairs well with multiply-by-quantity.</td></tr>
+<tr><td>Flash the figure when it changes?</td><td>true</td><td>A brief highlight on the amount so the eye is drawn to it. Respects the browser's reduced-motion preference.</td></tr>
+</table>
+
+<h2 id="counts">What counts toward the total</h2>
+<table>
+<tr><th>Element</th><th>Handled</th><th>Notes</th></tr>
+<tr><td>Base price</td><td>Yes</td><td>With specials and sales applied exactly as the cart applies them; a product priced by attributes starts from its raw price so its attributes carry the real prices.</td></tr>
+<tr><td>Dropdown, radio, checkbox</td><td>Yes</td><td>Plus and minus prefixes; "discounted" attributes go through the same sale/special calculation as the cart.</td></tr>
+<tr><td>Text and file options</td><td>Yes</td><td>The option's flat price counts whenever the field is on the form, as it does in the cart. Per-word and per-letter pricing is counted as the customer types, with Zen Cart's own rules for free words, free letters and free spaces.</td></tr>
+<tr><td>Price factor</td><td>Yes</td><td>Percentage-of-price attributes, including the one-time variant.</td></tr>
+<tr><td>Quantity-tiered attribute prices</td><td>Yes</td><td>The tier for the quantity in the box, with the same tier-selection rule as the cart.</td></tr>
+<tr><td>One-time charges</td><td>Yes</td><td>Shown on their own line, not multiplied by quantity, tax applied as for the item.</td></tr>
+<tr><td>Product quantity discounts</td><td>Yes</td><td>Applied when "Multiply by the quantity box" is on. The tier prices are worked out on the server with the store's own function, so wholesale, specials and "discount from" behave as in the cart.</td></tr>
+<tr><td>Tax</td><td>Yes</td><td>Added when <em>Display Prices with Tax</em> is true, at the product's tax class rate for the customer's location.</td></tr>
+<tr><td>Currency</td><td>Yes</td><td>Converted and formatted in the currency the customer has selected, symbols and separators included.</td></tr>
+<tr><td>Wholesale pricing (v2.2+)</td><td>Yes</td><td>A wholesale customer sees wholesale figures.</td></tr>
+<tr><td>Free / Call for price</td><td>Yes</td><td>A free product totals its attributes only; a call-for-price product gets no running total at all, matching the page.</td></tr>
+<tr><td>Read-only options</td><td>Yes</td><td>Never charged, as they are never submitted.</td></tr>
+</table>
+
+<h2 id="templates">Templates and selectors</h2>
+<p>The plugin finds its way around the page with two CSS selectors that are settings, because templates
+differ.</p>
+<h3>Stock price block selectors</h3>
+<p>What to hide (or write into). Zen Cart's own templates, <code>responsive_classic</code> and
+<code>template_default</code> on every release, put the price in <code>&lt;h2 id="productPrices"&gt;</code>.
+The ZCA Bootstrap template wraps it in a card, <code>#productsPriceTop-card</code>, and can show a second
+one, <code>#productsPriceBottom-card</code>, below the attributes. The default list covers all three; a
+selector that matches nothing is harmless.</p>
+<p>With the <em>Top</em> placement, the total is written into the heading inside the
+matched block, so a Bootstrap card keeps its frame.</p>
+<h3>Add to Cart container selector</h3>
+<p>Where to put the total. <code>#cartAdd</code> is the element that holds the quantity box and button in
+the stock templates, and the card body that holds the button in ZCA Bootstrap. The total is inserted
+immediately before the submit button inside it, so on the stock template it lands between the quantity
+box and the button, and on Bootstrap directly above the button.</p>
+<p>If the selector matches nothing, the plugin looks for the form's submit button anywhere, then for the
+attributes block. If none of those exist, it gives up and shows the stock heading again.</p>
+<div class="note"><p>To find your template's ids: open a product page, right-click the price, choose
+<em>Inspect</em>, and read the <code>id</code> of the heading and of the element around the Add to Cart
+button.</p></div>
+
+<h2 id="customizing">Customizing the look</h2>
+<p>The plugin's stylesheet is <code>catalog/includes/templates/template_default/css/attribute_pricing_manager.css</code>
+inside the plugin. To change it, copy that file to <code>includes/templates/YOUR_TEMPLATE/css/</code> in your
+store and edit the copy: the plugin links the template's copy in preference to its own, so an upgrade never
+touches your changes. The same goes for the script, at
+<code>.../template_default/jscript/attribute_pricing_manager.js</code>.</p>
+<p>The markup is:</p>
+<pre><code>&lt;div class="apm-box" aria-live="polite"&gt;
+  &lt;span class="apm-label"&gt;Your Price:&lt;/span&gt;
+  &lt;span class="apm-amount"&gt;$249.95&lt;/span&gt;
+  &lt;span class="apm-onetime"&gt;
+    &lt;span class="apm-onetime-label"&gt;One-time charge: &lt;/span&gt;
+    &lt;span class="apm-onetime-amount"&gt;$25.00&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<p>The one-time line is only present when that setting is on, and only visible when a chosen option has
+such a charge. <code>aria-live="polite"</code> means a screen reader announces the new figure when it
+changes.</p>
+
+<h2 id="translating">Translating</h2>
+<p>The four visible strings are in
+<code>catalog/includes/languages/english/extra_definitions/lang.attribute_pricing_manager.php</code>. Copy that file
+to <code>catalog/includes/languages/&lt;your language&gt;/extra_definitions/</code> inside the plugin and
+translate the values. <code>APM_TEXT_SUFFIX</code> is empty by default and is appended after the figure; a
+store that shows prices without tax might set it to <code>' plus VAT'</code>.</p>
+
+<h2 id="limits">Limitations</h2>
+<ul>
+<li><strong>It needs JavaScript.</strong> Without it the page is exactly as Zen Cart made it: the stock
+"Starting at:" heading is only hidden once the script has somewhere to put the total.</li>
+<li><strong>Quantities above one are close, not exact, in one corner.</strong> A "discounted" attribute on
+a product with quantity discounts is priced by the cart through a quantity-aware calculation; the plugin
+prices it for one and multiplies. Products without quantity discounts, and attributes that are not marked
+discounted, are exact at any quantity.</li>
+<li><strong>Anything already in the cart is not added in.</strong> The total is for what is on this
+page. Zen Cart's mixed-quantity discount floor is honoured, though: if three are already in the cart, the
+tier prices reflect that.</li>
+<li><strong>Gift certificates</strong> take their price from the amount typed, which the plugin does not
+attempt to read.</li>
+<li>The plugin does not touch category listings, search results or the shopping cart page.</li>
+</ul>
+
+<h2 id="upgrading">Upgrading</h2>
+<p>Upload the new version's directory beside the old one, so both
+<code>zc_plugins/AttributePricingManager/v1.0.0/</code> and the newer one are present, then in Plugin Manager
+select the plugin and click <strong>Upgrade</strong>. Your settings are kept: an upgrade refreshes the
+labels and help text of each setting but never its value. Delete the old version directory afterwards.</p>
+
+<h2 id="uninstalling">Uninstalling</h2>
+<p>In Plugin Manager, select the plugin and click <strong>Uninstall</strong>. That removes the
+configuration group and every setting. Then delete <code>zc_plugins/AttributePricingManager/</code>. No other file
+in your store was changed, and no table was created.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3>Nothing appears, and the stock price is still there</h3>
+<ul>
+<li>Is the plugin enabled in <strong>Configuration &rarr; Attribute Pricing Manager</strong>?</li>
+<li>Does the product have attributes? With "Only on products with options?" set to true, plain
+products are left alone.</li>
+<li>Is it a call-for-price or document product, or is the store in showcase mode? Those show no price
+anywhere, so the plugin stays quiet.</li>
+<li>View the page source and search for <code>attributePricingManager</code>. If it is not in the
+<code>&lt;head&gt;</code>, the plugin decided not to act on this page for one of the reasons above. If it
+is there but nothing shows, the script could not find a place to put the total: check the
+<a href="#templates">selectors</a>.</li>
+</ul>
+<h3>The figure differs from the cart</h3>
+<p>For a quantity of one they should agree to the cent. If they do not, note the product, the options
+chosen, and whether the product has a special, a sale, quantity discounts or a discounted attribute, and
+raise it on the <a href="#support">support thread</a> with those details. For quantities above one, see
+<a href="#limits">Limitations</a>.</p>
+<h3>Two prices are showing</h3>
+<p>The stock heading is hidden by the selectors in "Stock price block selectors". Your template names its
+price heading something else; add its id there.</p>
+<h3>The total is in the wrong place</h3>
+<p>Change "Add to Cart container selector" to the element that holds your template's Add to Cart button.</p>
+
+<h2 id="support">Support</h2>
+<p>Source, issues and releases are on <a href="https://github.com/dbltoe/Attribute_Pricing_Manager">GitHub</a>.
+The Zen Cart forum support thread is linked from the plugin's Plugin Manager panel once it exists.</p>
+
+<footer>
+<p>Attribute Pricing Manager &middot; Copyright &copy; 2026 My Zen Cart Host (dbltoe) &middot;
+GNU General Public License v2.0</p>
+</footer>
+
+</div>
+</body>
+</html>

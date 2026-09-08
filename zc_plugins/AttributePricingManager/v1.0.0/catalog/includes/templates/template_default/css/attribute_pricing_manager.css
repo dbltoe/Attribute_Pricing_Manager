@@ -1,0 +1,70 @@
+/*
+ * Attribute Pricing Manager -- storefront styles.
+ *
+ * To restyle, copy this file to includes/templates/YOUR_TEMPLATE/css/ and
+ * edit the copy: the plugin links the template's copy in preference to this
+ * one, so an upgrade never overwrites your changes.
+ */
+
+/* The box as it sits in front of the Add to Cart button. */
+.apm-box {
+    margin: 0 0 0.75em;
+    font-size: 1.25em;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.apm-label {
+    font-weight: normal;
+    margin-right: 0.35em;
+}
+
+.apm-amount {
+    font-weight: bold;
+    padding: 0 0.15em;
+    border-radius: 3px;
+}
+
+.apm-suffix {
+    font-size: 0.8em;
+    margin-left: 0.25em;
+}
+
+/* The once-per-order line, when a chosen option has one. */
+.apm-onetime {
+    display: block;
+    font-size: 0.75em;
+    margin-top: 0.25em;
+}
+
+/* The box written into the stock "Starting at:" heading keeps that
+ * heading's own size and alignment. */
+h1 .apm-box,
+h2 .apm-box,
+h3 .apm-box,
+.apm-inplace .apm-box {
+    display: inline;
+    margin: 0;
+    font-size: inherit;
+    text-align: inherit;
+}
+
+/* A short flash when the figure changes, so the eye is drawn to it. */
+.apm-changed .apm-amount {
+    animation: apm-pulse 0.7s ease-out;
+}
+
+@keyframes apm-pulse {
+    0% {
+        background-color: rgba(255, 235, 59, 0.85);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .apm-changed .apm-amount {
+        animation: none;
+    }
+}
