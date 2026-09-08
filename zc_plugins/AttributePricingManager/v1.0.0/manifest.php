@@ -39,7 +39,7 @@ $apmGithubUrl = 'https://github.com/dbltoe/Attribute_Pricing_Manager';
  * an uninstall and re-install. An empty string renders nothing at all, which
  * is the right outcome before the thread exists.
  */
-$apmForumUrl = '';
+$apmForumUrl = 'https://www.zen-cart.com/threads/207329#post-1347048';
 
 $apmButtonGap = '6px';
 
