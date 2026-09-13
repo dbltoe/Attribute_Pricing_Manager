@@ -82,7 +82,7 @@ return [
     // only by the INSERT that creates the row. The Library assigns the id on
     // final acceptance, so it is zero in the submitted package; set it here,
     // rebuild, and re-upload before any store installs from the Library.
-    'pluginId' => 0,
+    'pluginId' => 2258, // the id the Plugins Library embeds at acceptance, not the release number in the download URL
     'zcVersions' => ['v158', 'v200', 'v210', 'v220', 'v230', 'v300'],
     'changelog' => 'changelog.txt',
     'github_repo' => $apmGithubUrl,

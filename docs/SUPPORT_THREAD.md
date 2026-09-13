@@ -6,7 +6,7 @@ Opening post for the Zen Cart forum support thread (Addon Order Total Modules). 
 
 **Attribute Pricing Manager v1.0.0** - a running price on the product page that changes as the customer picks options
 
-**Plugins Library:** (link)
+**Plugins Library:** https://www.zen-cart.com/plugins/attribute-pricing-manager
 **GitHub:** https://github.com/dbltoe/Attribute_Pricing_Manager
 **Zen Cart:** 1.5.8, 2.0, 2.1, 2.2, 2.3 and 3.0.0-dev, from one codebase
 **PHP:** 7.4 through 8.5

@@ -1,5 +1,7 @@
 # Plugins Library listing text
 
+Listed 2026-09-08 at https://www.zen-cart.com/plugins/attribute-pricing-manager (Plugin ID 2258, written into the manifest 2026-09-13).
+
 Paste into the Zen Cart Plugins Library submission form, category **Pricing
 Tools**. The form takes Markdown. Not part of the release package.
 
