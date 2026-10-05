@@ -51,16 +51,12 @@ $apmLinks =
     . '<a href="' . $apmGithubUrl . '" target="_blank" rel="noopener noreferrer"'
     . ' class="btn btn-primary" role="button"'
     . ' style="margin:0 ' . $apmButtonGap . ' 0 0">GitHub</a>'
+    . ($apmForumUrl !== ''
+        ? '<a href="' . $apmForumUrl . '" target="_blank" rel="noopener noreferrer"'
+          . ' class="btn btn-primary" role="button"'
+          . ' style="margin:0 ' . $apmButtonGap . ' 0 0">Forum Support Thread</a>'
+        : '')
     . '</div>';
-
-$apmForumLink = '';
-if ($apmForumUrl !== '') {
-    $apmForumLink =
-        '<div style="margin:8px 0 0;padding:0 0 0 ' . $apmButtonGap . '">'
-        . '<a href="' . $apmForumUrl . '" target="_blank" rel="noopener noreferrer">'
-        . 'Forum Support Thread</a>'
-        . '</div>';
-}
 
 return [
     'pluginVersion' => 'v1.0.0',
@@ -71,8 +67,7 @@ return [
         . 'front of the Add to Cart button. The figure is worked out the way the '
         . 'shopping cart works it out, so what they see is what they will pay. '
         . 'No AJAX, no template edits; works with the stock templates and ZCA Bootstrap.'
-        . $apmLinks
-        . $apmForumLink,
+        . $apmLinks,
     // Shown as the Author in Plugin Manager, and stored in
     // plugin_control.author / plugin_control_versions.author (varchar(64)).
     'pluginAuthor' => 'My Zen Cart Host (dbltoe)',
