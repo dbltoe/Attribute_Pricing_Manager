@@ -38,7 +38,7 @@ browser needs nothing that v1.5.8 lacks, and it is faster for the customer.
 ## Installing
 
 Upload `zc_plugins/AttributePricingManager/` so it lands at
-`<store root>/zc_plugins/AttributePricingManager/v1.0.0/`, then install it from
+`<store root>/zc_plugins/AttributePricingManager/v1.0.1/`, then install it from
 **Modules → Plugin Manager**. It is on as soon as it is installed. Details in
 [docs/INSTALL.md](docs/INSTALL.md).
 
@@ -58,7 +58,7 @@ the highlight. Every setting is explained in
 - [docs/CONFIGURATION.md](docs/CONFIGURATION.md) — every setting, and what counts toward the total
 - [docs/CUSTOMIZING.md](docs/CUSTOMIZING.md) — restyling, other templates, translating
 - [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) — how the v1.5.8 → v3.0.0 claim is kept true
-- `zc_plugins/AttributePricingManager/v1.0.0/readme.html` — the same, as one page, also linked from Plugin Manager
+- `zc_plugins/AttributePricingManager/v1.0.1/readme.html` — the same, as one page, also linked from Plugin Manager
 
 ## License
 

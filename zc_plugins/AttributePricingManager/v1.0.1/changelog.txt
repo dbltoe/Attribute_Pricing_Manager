@@ -1,6 +1,24 @@
 Attribute Pricing Manager -- changelog
 =============================
 
+v1.0.1
+------
+Released 2026-10-06.
+
+- Plugin ID is now 2456, the ID the Zen Cart Plugins Library assigned on
+  6 October 2026. It replaces 2258, which belonged to another plugin, so
+  update notices in Plugin Manager now report this plugin.
+- No code or settings changes. Upgrading is optional and only matters for
+  update notices.
+
+Upgrading: put the v1.0.1 folder beside the old one and click Upgrade in
+Admin > Modules > Plugin Manager. On Zen Cart v2.2 and later the new ID is
+picked up the next time Plugin Manager loads. On v1.5.8, v2.0 and v2.1 Zen
+Cart records the ID only when it first sees the plugin; to set it there, run
+UPDATE plugin_control SET zc_contrib_id = 2456 WHERE unique_key = 'AttributePricingManager';
+in Admin > Tools > Install SQL Patches, which adds your table prefix itself
+(in phpMyAdmin, add the prefix to plugin_control). It is not required.
+
 v1.0.0
 ------
 First release.

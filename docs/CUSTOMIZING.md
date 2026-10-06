@@ -7,7 +7,7 @@
 The plugin's stylesheet ships inside the plugin at:
 
 ```
-zc_plugins/AttributePricingManager/v1.0.0/catalog/includes/templates/template_default/css/attribute_pricing_manager.css
+zc_plugins/AttributePricingManager/v1.0.1/catalog/includes/templates/template_default/css/attribute_pricing_manager.css
 ```
 
 To change it, copy that file to `includes/templates/YOUR_TEMPLATE/css/` in

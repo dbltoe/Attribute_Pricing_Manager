@@ -1,6 +1,8 @@
 # Plugins Library listing text
 
-Listed 2026-09-08 at https://www.zen-cart.com/plugins/attribute-pricing-manager (Plugin ID 2258, written into the manifest 2026-09-13).
+Listed 2026-09-08 at https://www.zen-cart.com/plugins/attribute-pricing-manager (Plugin ID 2456, written into the manifest in v1.0.1).
+
+On 6 October 2026 the Library renumbered this plugin from 2258 to 2456: 2258 also belonged to an older plugin ("Bank Transfer Indonesia"), so the version server answered update checks with that plugin. ping.zen-cart.com/plugincheck/2456 returns "Attribute Pricing Manager".
 
 Paste into the Zen Cart Plugins Library submission form, category **Pricing
 Tools**. The form takes Markdown. Not part of the release package.
@@ -97,7 +99,7 @@ page does. Read-only options are never charged.
 ### Installation
 
 Upload `zc_plugins/AttributePricingManager/` so it lands at
-`<store root>/zc_plugins/AttributePricingManager/v1.0.0/`, then install it
+`<store root>/zc_plugins/AttributePricingManager/v1.0.1/`, then install it
 from Modules → Plugin Manager. It is on as soon as it is installed. Full
 documentation (readme.html) is inside the plugin and linked from the Plugin
 Manager panel.

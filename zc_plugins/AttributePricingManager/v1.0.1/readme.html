@@ -62,7 +62,7 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
 <header>
 <h1>Attribute Pricing Manager</h1>
 <p class="tagline">The price that changes as your customer chooses, right in front of Add to Cart.</p>
-<p class="meta">Version 1.0.0 &middot; Zen Cart v1.5.8 through v3.0.0 &middot; PHP 7.4 through 8.5 &middot;
+<p class="meta">Version 1.0.1 &middot; Zen Cart v1.5.8 through v3.0.0 &middot; PHP 7.4 through 8.5 &middot;
 <a href="https://github.com/dbltoe/Attribute_Pricing_Manager">GitHub</a> &middot;
 My Zen Cart Host (dbltoe)</p>
 </header>
@@ -127,7 +127,7 @@ page is exactly as it was.</p></div>
 <h2 id="install">Installing</h2>
 <ol>
 <li>Upload the <code>zc_plugins/AttributePricingManager/</code> directory from the package to your store, so that it
-lands at <code>&lt;store root&gt;/zc_plugins/AttributePricingManager/v1.0.0/</code>. Nothing goes anywhere else.</li>
+lands at <code>&lt;store root&gt;/zc_plugins/AttributePricingManager/v1.0.1/</code>. Nothing goes anywhere else.</li>
 <li>In your admin, go to <strong>Modules &rarr; Plugin Manager</strong>, select <strong>Attribute Pricing Manager</strong> and click <strong>Install</strong>.</li>
 <li>Open a product. The running total is there, in front of the Add to Cart button, labelled
 "Total:" and multiplied by the quantity box; the stock "Starting at:" heading stays where it was.
@@ -236,10 +236,18 @@ attempt to read.</li>
 </ul>
 
 <h2 id="upgrading">Upgrading</h2>
-<p>Upload the new version's directory beside the old one, so both
-<code>zc_plugins/AttributePricingManager/v1.0.0/</code> and the newer one are present, then in Plugin Manager
+<p>Upload the new version's directory beside the old one, so both the old directory and
+<code>zc_plugins/AttributePricingManager/v1.0.1/</code> are present, then in Plugin Manager
 select the plugin and click <strong>Upgrade</strong>. Your settings are kept: an upgrade refreshes the
 labels and help text of each setting but never its value. Delete the old version directory afterwards.</p>
+<p><strong>Version 1.0.1</strong> changes only the Plugin ID, to 2456, the ID the Plugins Library assigned on
+6 October 2026. It replaces 2258, which belonged to another plugin, so update notices in Plugin Manager
+now report this plugin. There are no code or settings changes, so upgrading is optional and only matters
+for update notices. On Zen Cart v2.2 and later the new ID is picked up the next time Plugin Manager loads.
+On v1.5.8, v2.0 and v2.1 Zen Cart records the ID only when it first sees the plugin; to set it there, run
+<code>UPDATE plugin_control SET zc_contrib_id = 2456 WHERE unique_key = 'AttributePricingManager';</code>
+in <strong>Admin &gt; Tools &gt; Install SQL Patches</strong>, which adds your table prefix itself (in
+phpMyAdmin, add the prefix to <code>plugin_control</code>). It is not required.</p>
 
 <h2 id="uninstalling">Uninstalling</h2>
 <p>In Plugin Manager, select the plugin and click <strong>Uninstall</strong>. That removes the

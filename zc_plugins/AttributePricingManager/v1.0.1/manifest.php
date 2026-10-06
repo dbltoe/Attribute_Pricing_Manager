@@ -26,7 +26,7 @@
  * description is whatever was captured the first time Plugin Manager saw the
  * plugin. That is why nothing state-dependent belongs in it.
  */
-$apmPluginDir = 'zc_plugins/AttributePricingManager/v1.0.0/';
+$apmPluginDir = 'zc_plugins/AttributePricingManager/v1.0.1/';
 $apmReadmeUrl = (defined('DIR_WS_CATALOG') ? DIR_WS_CATALOG : '/') . $apmPluginDir . 'readme.html';
 $apmGithubUrl = 'https://github.com/dbltoe/Attribute_Pricing_Manager';
 
@@ -59,7 +59,7 @@ $apmLinks =
     . '</div>';
 
 return [
-    'pluginVersion' => 'v1.0.0',
+    'pluginVersion' => 'v1.0.1',
     'pluginName' => 'Attribute Pricing Manager',
     'pluginDescription' =>
         'Replaces the static "Starting at:" price on product pages with a running '
@@ -71,13 +71,14 @@ return [
     // Shown as the Author in Plugin Manager, and stored in
     // plugin_control.author / plugin_control_versions.author (varchar(64)).
     'pluginAuthor' => 'My Zen Cart Host (dbltoe)',
-    // ID from the Zen Cart Plugins Library -- the number after "vb" in the
-    // plugin's page URL. It has to be right the FIRST time a store installs
-    // the plugin: on v1.5.8/v2.0/v2.1 plugin_control.zc_contrib_id is written
-    // only by the INSERT that creates the row. The Library assigns the id on
-    // final acceptance, so it is zero in the submitted package; set it here,
-    // rebuild, and re-upload before any store installs from the Library.
-    'pluginId' => 2258, // the id the Plugins Library embeds at acceptance, not the release number in the download URL
+    // ID from the Zen Cart Plugins Library -- the "Plugin ID" printed on the
+    // plugin's Library page, not the release number in a download URL.
+    // Plugin Manager sends it to the version server to check for updates.
+    // It has to be right the FIRST time a store sees the plugin: on
+    // v1.5.8/v2.0/v2.1 plugin_control.zc_contrib_id is written only by the
+    // INSERT that creates the row (v2.2 and later refresh it on every Plugin
+    // Manager scan). A bare integer, never quoted.
+    'pluginId' => 2456, // assigned by the Library 2026-10-06; replaces 2258, which was also another plugin's id
     'zcVersions' => ['v158', 'v200', 'v210', 'v220', 'v230', 'v300'],
     'changelog' => 'changelog.txt',
     'github_repo' => $apmGithubUrl,
