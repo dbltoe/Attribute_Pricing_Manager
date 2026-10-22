@@ -3,6 +3,8 @@ Attribute Pricing Manager -- changelog
 
 v1.1.0
 ------
+Released 2026-10-22.
+
 - New setting "Include one-time charges in the total?" (default false, so
   nothing changes until it is turned on). When true, a one-time charge such
   as a gift box is added into the running total, once whatever the quantity,
