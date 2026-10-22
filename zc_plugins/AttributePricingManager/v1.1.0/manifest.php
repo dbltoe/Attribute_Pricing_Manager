@@ -26,7 +26,7 @@
  * description is whatever was captured the first time Plugin Manager saw the
  * plugin. That is why nothing state-dependent belongs in it.
  */
-$apmPluginDir = 'zc_plugins/AttributePricingManager/v1.0.1/';
+$apmPluginDir = 'zc_plugins/AttributePricingManager/v1.1.0/';
 $apmReadmeUrl = (defined('DIR_WS_CATALOG') ? DIR_WS_CATALOG : '/') . $apmPluginDir . 'readme.html';
 $apmGithubUrl = 'https://github.com/dbltoe/Attribute_Pricing_Manager';
 
@@ -59,7 +59,7 @@ $apmLinks =
     . '</div>';
 
 return [
-    'pluginVersion' => 'v1.0.1',
+    'pluginVersion' => 'v1.1.0',
     'pluginName' => 'Attribute Pricing Manager',
     'pluginDescription' =>
         'Replaces the static "Starting at:" price on product pages with a running '

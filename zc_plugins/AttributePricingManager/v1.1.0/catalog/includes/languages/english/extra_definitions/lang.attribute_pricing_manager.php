@@ -24,6 +24,10 @@ $define = [
      * added once per order rather than per item. */
     'APM_TEXT_ONETIME' => 'One-time charge:',
 
+    /* The same line when "Include one-time charges in the total?" is on: the
+     * charge is already in the total above it. */
+    'APM_TEXT_ONETIME_INCLUDED' => 'Includes one-time charge:',
+
     /* Appended after the figure, e.g. ' plus tax' or ' incl. VAT'. Left empty
      * by default because the figure follows the store's own "Display Prices
      * with Tax" setting, exactly as the cart does. */

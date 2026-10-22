@@ -15,6 +15,7 @@ Everything is under **Admin → Configuration → Attribute Pricing Manager**.
 | **Add to Cart container selector** | `#cartAdd` | The element that holds the Add to Cart button. The total goes immediately before the submit button inside it. |
 | **Multiply by the quantity box?** | true | *false*: the price of one item with the chosen options, labelled "Your Price:". *true*: that times the quantity in the box, labelled "Total:", with the product's quantity discounts applied. |
 | **Show one-time charges?** | true | When a chosen option carries a once-per-order charge, show it on its own line beneath the total. |
+| **Include one-time charges in the total?** | false | *false*: the total is the item price, with a one-time charge (a gift box, a setup fee) on its own line. *true*: the one-time charge is added into the total, once whatever the quantity, as the cart adds it, so the customer sees what the line will cost before clicking Add to Cart; the line beneath reads "Includes one-time charge:". |
 | **Only on products with options?** | false | *true*: only where there is a "Starting at:" to improve on. *false*: every product page, which pairs well with multiply-by-quantity. |
 | **Flash the figure when it changes?** | true | A brief highlight on the amount. Respects the browser's reduced-motion preference. |
 

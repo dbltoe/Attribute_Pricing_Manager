@@ -62,7 +62,7 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
 <header>
 <h1>Attribute Pricing Manager</h1>
 <p class="tagline">The price that changes as your customer chooses, right in front of Add to Cart.</p>
-<p class="meta">Version 1.0.1 &middot; Zen Cart v1.5.8 through v3.0.0 &middot; PHP 7.4 through 8.5 &middot;
+<p class="meta">Version 1.1.0 &middot; Zen Cart v1.5.8 through v3.0.0 &middot; PHP 7.4 through 8.5 &middot;
 <a href="https://github.com/dbltoe/Attribute_Pricing_Manager">GitHub</a> &middot;
 My Zen Cart Host (dbltoe)</p>
 </header>
@@ -127,7 +127,7 @@ page is exactly as it was.</p></div>
 <h2 id="install">Installing</h2>
 <ol>
 <li>Upload the <code>zc_plugins/AttributePricingManager/</code> directory from the package to your store, so that it
-lands at <code>&lt;store root&gt;/zc_plugins/AttributePricingManager/v1.0.1/</code>. Nothing goes anywhere else.</li>
+lands at <code>&lt;store root&gt;/zc_plugins/AttributePricingManager/v1.1.0/</code>. Nothing goes anywhere else.</li>
 <li>In your admin, go to <strong>Modules &rarr; Plugin Manager</strong>, select <strong>Attribute Pricing Manager</strong> and click <strong>Install</strong>.</li>
 <li>Open a product. The running total is there, in front of the Add to Cart button, labelled
 "Total:" and multiplied by the quantity box; the stock "Starting at:" heading stays where it was.
@@ -150,6 +150,7 @@ to it or git will not see the plugin. This has no effect on the plugin working.<
 <tr><td>Add to Cart container selector</td><td><code>#cartAdd</code></td><td>The element holding the Add to Cart button; the total goes immediately before the button inside it.</td></tr>
 <tr><td>Multiply by the quantity box?</td><td>true</td><td><strong>false</strong>: the price of one item with the chosen options, labelled "Your Price:". <strong>true</strong>: that times the quantity in the box, labelled "Total:", with the product's quantity discounts applied.</td></tr>
 <tr><td>Show one-time charges?</td><td>true</td><td>When a chosen option carries a once-per-order charge, show it on its own line beneath the total.</td></tr>
+<tr><td>Include one-time charges in the total?</td><td>false</td><td><strong>false</strong>: the total is the item price, with a one-time charge (a gift box, a setup fee) on its own line. <strong>true</strong>: the one-time charge is added into the total, once whatever the quantity, as the cart adds it, so the customer sees what the line will cost before clicking Add to Cart; the line beneath reads "Includes one-time charge:".</td></tr>
 <tr><td>Only on products with options?</td><td>false</td><td><strong>true</strong>: only where there is a "Starting at:" to improve on. <strong>false</strong>: every product page, which pairs well with multiply-by-quantity.</td></tr>
 <tr><td>Flash the figure when it changes?</td><td>true</td><td>A brief highlight on the amount so the eye is drawn to it. Respects the browser's reduced-motion preference.</td></tr>
 </table>
@@ -162,7 +163,7 @@ to it or git will not see the plugin. This has no effect on the plugin working.<
 <tr><td>Text and file options</td><td>Yes</td><td>The option's flat price counts whenever the field is on the form, as it does in the cart. Per-word and per-letter pricing is counted as the customer types, with Zen Cart's own rules for free words, free letters and free spaces.</td></tr>
 <tr><td>Price factor</td><td>Yes</td><td>Percentage-of-price attributes, including the one-time variant.</td></tr>
 <tr><td>Quantity-tiered attribute prices</td><td>Yes</td><td>The tier for the quantity in the box, with the same tier-selection rule as the cart.</td></tr>
-<tr><td>One-time charges</td><td>Yes</td><td>Shown on their own line, not multiplied by quantity, tax applied as for the item.</td></tr>
+<tr><td>One-time charges</td><td>Yes</td><td>Shown on their own line, not multiplied by quantity, tax applied as for the item. Added into the total too when "Include one-time charges in the total?" is on.</td></tr>
 <tr><td>Product quantity discounts</td><td>Yes</td><td>Applied when "Multiply by the quantity box" is on. The tier prices are worked out on the server with the store's own function, so wholesale, specials and "discount from" behave as in the cart.</td></tr>
 <tr><td>Tax</td><td>Yes</td><td>Added when <em>Display Prices with Tax</em> is true, at the product's tax class rate for the customer's location.</td></tr>
 <tr><td>Currency</td><td>Yes</td><td>Converted and formatted in the currency the customer has selected, symbols and separators included.</td></tr>
@@ -237,9 +238,13 @@ attempt to read.</li>
 
 <h2 id="upgrading">Upgrading</h2>
 <p>Upload the new version's directory beside the old one, so both the old directory and
-<code>zc_plugins/AttributePricingManager/v1.0.1/</code> are present, then in Plugin Manager
+<code>zc_plugins/AttributePricingManager/v1.1.0/</code> are present, then in Plugin Manager
 select the plugin and click <strong>Upgrade</strong>. Your settings are kept: an upgrade refreshes the
 labels and help text of each setting but never its value. Delete the old version directory afterwards.</p>
+<p><strong>Version 1.1.0</strong> adds one setting, <em>Include one-time charges in the total?</em>
+(off by default, so nothing changes until you turn it on). When it is on, a one-time charge such as a gift
+box is added into the running total, once whatever the quantity, and the line beneath it reads
+"Includes one-time charge:". Upgrading adds the setting; your other settings are kept.</p>
 <p><strong>Version 1.0.1</strong> changes only the Plugin ID, to 2456, the ID the Plugins Library assigned on
 6 October 2026. It replaces 2258, which belonged to another plugin, so update notices in Plugin Manager
 now report this plugin. There are no code or settings changes, so upgrading is optional and only matters

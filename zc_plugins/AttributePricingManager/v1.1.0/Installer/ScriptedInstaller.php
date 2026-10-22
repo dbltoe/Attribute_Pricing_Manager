@@ -284,6 +284,14 @@ class ScriptedInstaller extends ScriptedInstallBase
                 'set_function' => $yesNo,
             ],
             [
+                'key' => 'APM_ONETIME_IN_TOTAL',
+                'title' => 'Include one-time charges in the total?',
+                'value' => 'false',
+                'description' => '<b>false</b>: the running total is the price of the item(s), and a one-time charge (a gift box, a setup fee) shows on its own line beneath it.<br><br><b>true</b>: the one-time charge is added into the running total, so the customer sees what the line will cost before clicking Add to Cart, and the line beneath it reads "Includes one-time charge:". The charge is added once, whatever the quantity, as the cart does.',
+                'sort_order' => 75,
+                'set_function' => $yesNo,
+            ],
+            [
                 'key' => 'APM_ATTRIBUTES_ONLY',
                 'title' => 'Only on products with options?',
                 'value' => 'false',

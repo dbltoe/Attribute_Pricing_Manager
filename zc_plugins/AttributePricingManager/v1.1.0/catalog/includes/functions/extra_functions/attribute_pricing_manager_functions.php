@@ -530,10 +530,13 @@ function apm_build_data($productsId)
     $base = apm_base_price($productsId, $fields);
     $taxRate = zen_get_tax_rate($fields['products_tax_class_id'] ?? 0);
 
+    $onetimeInTotal = apm_setting('APM_ONETIME_IN_TOTAL', 'false') === 'true';
     $labels = [
         'price' => defined('APM_TEXT_PRICE') ? APM_TEXT_PRICE : 'Your Price:',
         'total' => defined('APM_TEXT_TOTAL') ? APM_TEXT_TOTAL : 'Total:',
-        'onetime' => defined('APM_TEXT_ONETIME') ? APM_TEXT_ONETIME : 'One-time charge:',
+        'onetime' => $onetimeInTotal
+            ? (defined('APM_TEXT_ONETIME_INCLUDED') ? APM_TEXT_ONETIME_INCLUDED : 'Includes one-time charge:')
+            : (defined('APM_TEXT_ONETIME') ? APM_TEXT_ONETIME : 'One-time charge:'),
         'suffix' => defined('APM_TEXT_SUFFIX') ? APM_TEXT_SUFFIX : '',
     ];
 
@@ -553,6 +556,7 @@ function apm_build_data($productsId)
         'targetSelector' => apm_clean_selectors(apm_setting('APM_TARGET_SELECTOR', '#cartAdd')),
         'multiplyQty' => apm_setting('APM_MULTIPLY_QTY', 'true') === 'true',
         'showOnetime' => apm_setting('APM_SHOW_ONETIME', 'true') === 'true',
+        'onetimeInTotal' => $onetimeInTotal,
         'highlight' => apm_setting('APM_HIGHLIGHT', 'true') === 'true',
         'labels' => $labels,
     ];

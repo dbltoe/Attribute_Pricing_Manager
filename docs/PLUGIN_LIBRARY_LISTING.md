@@ -99,7 +99,7 @@ page does. Read-only options are never charged.
 ### Installation
 
 Upload `zc_plugins/AttributePricingManager/` so it lands at
-`<store root>/zc_plugins/AttributePricingManager/v1.0.1/`, then install it
+`<store root>/zc_plugins/AttributePricingManager/v1.1.0/`, then install it
 from Modules → Plugin Manager. It is on as soon as it is installed. Full
 documentation (readme.html) is inside the plugin and linked from the Plugin
 Manager panel.

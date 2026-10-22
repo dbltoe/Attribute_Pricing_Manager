@@ -1,6 +1,19 @@
 Attribute Pricing Manager -- changelog
 =============================
 
+v1.1.0
+------
+- New setting "Include one-time charges in the total?" (default false, so
+  nothing changes until it is turned on). When true, a one-time charge such
+  as a gift box is added into the running total, once whatever the quantity,
+  as the cart adds it, so the customer sees what the line will cost before
+  clicking Add to Cart. The line beneath the total then reads "Includes
+  one-time charge:" (new language constant APM_TEXT_ONETIME_INCLUDED).
+
+Upgrading: put the v1.1.0 folder beside the old one and click Upgrade in
+Admin > Modules > Plugin Manager. The upgrade adds the new setting; your
+other settings are kept.
+
 v1.0.1
 ------
 Released 2026-10-06.

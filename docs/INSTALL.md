@@ -16,7 +16,7 @@ zc_plugins/AttributePricingManager/
 Upload it so it lands at:
 
 ```
-<your store root>/zc_plugins/AttributePricingManager/v1.0.1/
+<your store root>/zc_plugins/AttributePricingManager/v1.1.0/
 ```
 
 That directory should contain `manifest.php`, `readme.html`, `changelog.txt`,
@@ -63,7 +63,7 @@ settings put that right.
 ## Upgrading
 
 Upload the new version's directory beside the old one, so that both the old
-directory and `zc_plugins/AttributePricingManager/v1.0.1/` are present. In
+directory and `zc_plugins/AttributePricingManager/v1.1.0/` are present. In
 Plugin Manager, select the plugin and click **Upgrade**.
 
 Your settings are kept. An upgrade refreshes each setting's label and help

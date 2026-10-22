@@ -105,7 +105,9 @@
      * @param {Array}  selections [{key: '2:3'}, {key: 'txt:5', text: 'hello'}]
      * @param {number} qty        the quantity in the box
      * @returns {{unit: number, total: number, onetime: number, qty: number}}
-     *          unit and onetime are before tax; total is what to display.
+     *          unit is before tax; total and onetime are what to display. With
+     *          data.onetimeInTotal the one-time charge is added into total once,
+     *          whatever the quantity, as shoppingCart::calculate() adds it.
      */
     APM.compute = function (data, selections, qty) {
         var price, attrs = 0, onetime = 0, i, sel, a, words, letters, unit, total, onetimeShown;
@@ -155,6 +157,9 @@
         }
         if (data.multiplyQty) {
             total = total * qty;
+        }
+        if (data.onetimeInTotal) {
+            total = total + onetimeShown;
         }
 
         return {unit: unit, total: total, onetime: onetimeShown, qty: qty};
