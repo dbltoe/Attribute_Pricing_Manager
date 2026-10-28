@@ -113,10 +113,12 @@ v2.x/v3.x pass `$oldVersion`.
 
 ### `pluginDescription` renders as raw HTML in Plugin Manager
 
-Which is where the Read Me and GitHub buttons come from. On v1.5.8, v2.0 and
-v2.1 the description is written only by the INSERT that first creates the
-`plugin_control` row, so nothing state-dependent belongs in it, and the forum
-link must be in the manifest before the first release.
+Which is where the ReadMe, Settings, Forum Thread and GitHub buttons come
+from. On v1.5.8, v2.0 and v2.1 the description is written only by the INSERT
+that first creates the `plugin_control` row, so the forum link must be in the
+manifest before the first release, and the installer saves the description
+again at Install, Upgrade and Uninstall so the Settings button follows the
+install state there too.
 
 ### `pluginId` must be right the first time
 

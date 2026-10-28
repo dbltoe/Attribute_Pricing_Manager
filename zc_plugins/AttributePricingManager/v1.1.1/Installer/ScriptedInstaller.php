@@ -50,6 +50,7 @@ class ScriptedInstaller extends ScriptedInstallBase
             return false;
         }
         $this->apmRegisterAdminPages($configGroupId);
+        $this->apmRefreshPluginDescription();
 
         $this->apmLog('Attribute Pricing Manager: installed/upgraded.', 'info');
 
@@ -84,10 +85,41 @@ class ScriptedInstaller extends ScriptedInstallBase
         $this->executeInstallerSql(
             "DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'APM\\_%'"
         );
+        $this->apmRefreshPluginDescription();
 
         $this->apmLog('Attribute Pricing Manager: uninstalled.', 'info');
 
         return true;
+    }
+
+    /**
+     * Save the manifest's description again, now that the Settings page has
+     * been registered (install, upgrade) or removed (uninstall).
+     *
+     * Needed on v1.5.8, v2.0 and v2.1, which store plugin_control.description
+     * only when Plugin Manager first sees the plugin, before Install, so the
+     * Settings button (built in manifest.php from the registered admin page)
+     * would never appear there. v2.2 and later rewrite the description from
+     * the manifest on every Plugin Manager visit, so this is a no-op there in
+     * effect. Core's own install/uninstall step changes only status and
+     * version, so this description stays.
+     *
+     * @return void
+     */
+    protected function apmRefreshPluginDescription()
+    {
+        if (!defined('TABLE_PLUGIN_CONTROL')) {
+            return;
+        }
+        $manifest = require dirname(__DIR__) . '/manifest.php';
+        if (!is_array($manifest) || !isset($manifest['pluginDescription'])) {
+            return;
+        }
+        $this->executeInstallerSql(
+            "UPDATE " . TABLE_PLUGIN_CONTROL
+            . " SET description = '" . $this->dbConn->prepare_input($manifest['pluginDescription']) . "'"
+            . " WHERE unique_key = 'AttributePricingManager'"
+        );
     }
 
     /**

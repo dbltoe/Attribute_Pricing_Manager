@@ -24,9 +24,10 @@
  * Plugin Manager scan. On v1.5.8, v2.0 and v2.1 it is not: those releases
  * update only the `infs` column for a row that already exists, so the
  * description is whatever was captured the first time Plugin Manager saw the
- * plugin. That is why nothing state-dependent belongs in it.
+ * plugin. The one state-dependent part, the Settings button, is handled
+ * below.
  */
-$apmPluginDir = 'zc_plugins/AttributePricingManager/v1.1.0/';
+$apmPluginDir = 'zc_plugins/AttributePricingManager/v1.1.1/';
 $apmReadmeUrl = (defined('DIR_WS_CATALOG') ? DIR_WS_CATALOG : '/') . $apmPluginDir . 'readme.html';
 $apmGithubUrl = 'https://github.com/dbltoe/Attribute_Pricing_Manager';
 
@@ -41,25 +42,55 @@ $apmGithubUrl = 'https://github.com/dbltoe/Attribute_Pricing_Manager';
  */
 $apmForumUrl = 'https://www.zen-cart.com/threads/207329?page=1#post-1347048';
 
-$apmButtonGap = '6px';
+/**
+ * The Settings button: this plugin's Configuration page, shown only once the
+ * plugin is installed. Its gID is assigned at install, so it differs from
+ * store to store and can't be written here; it's read from the admin page the
+ * installer registers (page key configAttributePricingManager). The link is
+ * relative ("index.php?cmd=configuration&gID=N") because Plugin Manager is an
+ * admin page, so it survives a domain or admin-folder rename.
+ *
+ * Zen Cart reads manifests only on the Plugin Manager page, but the lookup is
+ * still guarded so a manifest read anywhere else (no database, catalog side,
+ * CLI) just leaves the button out. On v2.2 and later this file is re-read on
+ * every Plugin Manager visit, so the button follows the install state by
+ * itself; on v1.5.8, v2.0 and v2.1 the installer saves the re-read
+ * description at Install, Upgrade and Uninstall (apmRefreshPluginDescription).
+ */
+$apmSettingsUrl = '';
+if (defined('IS_ADMIN_FLAG') && IS_ADMIN_FLAG === true && defined('TABLE_ADMIN_PAGES')
+    && isset($GLOBALS['db']) && is_object($GLOBALS['db'])) {
+    $apmPage = $GLOBALS['db']->Execute(
+        "SELECT main_page, page_params FROM " . TABLE_ADMIN_PAGES
+        . " WHERE page_key = 'configAttributePricingManager' LIMIT 1"
+    );
+    if (!$apmPage->EOF && defined($apmPage->fields['main_page'])) {
+        $apmSettingsUrl = 'index.php?cmd=' . constant($apmPage->fields['main_page'])
+            . '&' . $apmPage->fields['page_params'];
+    }
+}
+
+// One row of buttons: ReadMe | Settings | Forum Thread | GitHub. The tighter
+// padding and gaps keep all four on one line in Plugin Manager's side panel
+// from a 1366px-wide window up (measured on the v2.2 admin).
+$apmButtonGap = '4px';
+$apmButtonStyle = ' style="margin:0 ' . $apmButtonGap . ' 0 0;padding-left:8px;padding-right:8px"';
+$apmButton = static function ($url, $label, $newTab) use ($apmButtonStyle) {
+    return '<a href="' . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . '"'
+        . ($newTab ? ' target="_blank" rel="noopener noreferrer"' : '')
+        . ' class="btn btn-primary" role="button"' . $apmButtonStyle . '>' . $label . '</a>';
+};
 
 $apmLinks =
     '<div style="margin:10px 0 0;padding:0 0 0 ' . $apmButtonGap . '">'
-    . '<a href="' . $apmReadmeUrl . '" target="_blank" rel="noopener noreferrer"'
-    . ' class="btn btn-primary" role="button"'
-    . ' style="margin:0 ' . $apmButtonGap . ' 0 0">Read Me</a>'
-    . '<a href="' . $apmGithubUrl . '" target="_blank" rel="noopener noreferrer"'
-    . ' class="btn btn-primary" role="button"'
-    . ' style="margin:0 ' . $apmButtonGap . ' 0 0">GitHub</a>'
-    . ($apmForumUrl !== ''
-        ? '<a href="' . $apmForumUrl . '" target="_blank" rel="noopener noreferrer"'
-          . ' class="btn btn-primary" role="button"'
-          . ' style="margin:0 ' . $apmButtonGap . ' 0 0">Forum Support Thread</a>'
-        : '')
+    . $apmButton($apmReadmeUrl, 'ReadMe', true)
+    . ($apmSettingsUrl !== '' ? $apmButton($apmSettingsUrl, 'Settings', false) : '')
+    . ($apmForumUrl !== '' ? $apmButton($apmForumUrl, 'Forum Thread', true) : '')
+    . $apmButton($apmGithubUrl, 'GitHub', true)
     . '</div>';
 
 return [
-    'pluginVersion' => 'v1.1.0',
+    'pluginVersion' => 'v1.1.1',
     'pluginName' => 'Attribute Pricing Manager',
     'pluginDescription' =>
         'Replaces the static "Starting at:" price on product pages with a running '

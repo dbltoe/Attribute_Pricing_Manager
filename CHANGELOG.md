@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.1.1
+
+Released 2026-10-27.
+
+- **Settings button in Plugin Manager.** Once the plugin is installed, its
+  info panel has a Settings button that opens Configuration > Attribute
+  Pricing Manager directly. It isn't shown before Install or after
+  Uninstall. On 1.5.8, 2.0 and 2.1, which keep the panel they first saw, the
+  installer saves it again at Install, Upgrade and Uninstall.
+- The buttons are one row, ReadMe | Settings | Forum Thread | GitHub, a
+  little narrower so all four fit on one line from a 1366px-wide window up
+  ("Read Me" is now "ReadMe" and "Forum Support Thread" is now "Forum
+  Thread").
+- Nothing changes on the storefront or in the settings.
+
+Upgrading: put the v1.1.1 folder beside the old one and click **Upgrade** in
+Admin > Modules > Plugin Manager. Your settings are kept.
+
 ## v1.1.0
 
 Released 2026-10-22.

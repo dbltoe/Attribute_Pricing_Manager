@@ -16,7 +16,7 @@ zc_plugins/AttributePricingManager/
 Upload it so it lands at:
 
 ```
-<your store root>/zc_plugins/AttributePricingManager/v1.1.0/
+<your store root>/zc_plugins/AttributePricingManager/v1.1.1/
 ```
 
 That directory should contain `manifest.php`, `readme.html`, `changelog.txt`,
@@ -38,8 +38,9 @@ later.
 3. Find **Attribute Pricing Manager** and click **Install**.
 
 > Selecting the plugin shows an info panel on the right. Alongside the
-> Install / Uninstall buttons are **Read Me** and **GitHub** buttons; Read Me
-> opens the full documentation from inside the plugin directory.
+> Install / Uninstall buttons are **ReadMe**, **Forum Thread** and **GitHub**
+> buttons, plus **Settings** once the plugin is installed; ReadMe opens the
+> full documentation from inside the plugin directory.
 
 Installing creates a configuration group, **Attribute Pricing Manager**, with nine
 settings, and its entry on the Configuration menu. Nothing else: no tables,
@@ -63,7 +64,7 @@ settings put that right.
 ## Upgrading
 
 Upload the new version's directory beside the old one, so that both the old
-directory and `zc_plugins/AttributePricingManager/v1.1.0/` are present. In
+directory and `zc_plugins/AttributePricingManager/v1.1.1/` are present. In
 Plugin Manager, select the plugin and click **Upgrade**.
 
 Your settings are kept. An upgrade refreshes each setting's label and help
