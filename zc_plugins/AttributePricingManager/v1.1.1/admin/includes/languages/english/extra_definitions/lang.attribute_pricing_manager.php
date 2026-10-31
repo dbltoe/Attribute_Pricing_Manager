@@ -7,7 +7,7 @@
  * `extra_definitions`.
  *
  * @package  AttributePricingManager
- * @license  http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License V2.0
  */
 
 $define = [
